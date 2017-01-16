@@ -41,11 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 String shareBody = output.getText().toString();
-                String shareSubject = "Nice Meme!";
-                intent.putExtra(Intent.EXTRA_SUBJECT,shareSubject);
                 intent.putExtra(Intent.EXTRA_TEXT,shareBody);
                 startActivity(Intent.createChooser(intent, "Share using"));
-
             }
         });
 
