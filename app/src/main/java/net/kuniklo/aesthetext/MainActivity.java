@@ -1,7 +1,8 @@
-package net.kuniklo.aesthetextandroid;
+package net.kuniklo.aesthetext;
 
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SeekBar spacingBar;
     private TextView spacingText;
     private Switch capsSwitch;
-    private boolean capsIsChecked;
+    private Button shareButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         button = (Button) findViewById(R.id.copyButton);
         button.setOnClickListener(MainActivity.this);
+
+        shareButton = (Button) findViewById(R.id.shareButton);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String shareBody = output.getText().toString();
+                String shareSubject = "Nice Meme!";
+                intent.putExtra(Intent.EXTRA_SUBJECT,shareSubject);
+                intent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                startActivity(Intent.createChooser(intent, "Share using"));
+
+            }
+        });
 
         input = (TextView) findViewById(R.id.inputText);
 

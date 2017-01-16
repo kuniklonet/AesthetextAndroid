@@ -1,4 +1,4 @@
-package net.kuniklo.aesthetextandroid;
+package net.kuniklo.aesthetext;
 
 import org.junit.Test;
 
