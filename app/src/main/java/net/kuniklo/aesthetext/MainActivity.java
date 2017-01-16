@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        spacingText.setText(Integer.toString(spacingBar.getProgress()));
     }
 
     @Override
